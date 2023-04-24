@@ -12,8 +12,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 const io = new Server(httpServer)
 
 io.on('connection', (socket) => {
-    console.log('new connection!');
+    console.log('new connection!', socket.id);
 })
 
-httpServer.listen(3000);
+httpServer.listen(port);
 
