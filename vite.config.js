@@ -1,7 +1,11 @@
-export default {
-  publicDir: "public",
+import { defineConfig } from "vite";
+import reactRefresh from "@vitejs/plugin-react-refresh";
+
+export default defineConfig({
+  root: "public",
+  plugins: [reactRefresh()],
   build: {
-    outDir: "dist",
+    outDir: "../dist",
   },
   server: {
     proxy: {
@@ -12,4 +16,4 @@ export default {
       },
     },
   },
-};
+});

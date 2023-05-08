@@ -6,10 +6,13 @@ const socket = require('socket.io');
 const app = express();
 const httpServer = http.createServer(app);
 const port = process.env.PORT || 3000;
-
-app.use(express.static(path.join(__dirname, 'public')));
-
 const io = new socket.Server(httpServer);
+
+app.use(express.static(path.join(__dirname, '..', 'dist')));
+
+app.get('*', (req, res) => {
+    res.send("Hello, world!");
+});
 
 io.on('connection', (socket) => {
     socket.on('chat:message', (data) => {
